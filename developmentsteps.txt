@@ -24,3 +24,31 @@ Add code to main.py
 
 run the below command to check if the main.py file is running the app successfully
 uvicorn app.main:app --reload
+
+url to verify the code:
+http://127.0.0.1:8000
+http://127.0.0.1:8000/docs
+
+git init
+create .gitignore file and add below code
+venv/
+__pycache__/
+*.pyc
+.env
+app.db
+
+install sqlite extension
+
+create repo in github account
+git remote add origin https://github.com/<your-username>/order-management-system.git
+git branch -M main
+git push -u origin main
+
+connect to your git account using token which can be generated through github portal and it can be specific to your repo
+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
+
+git checkout -b feature/auth
+# do work
+git add .
+git commit -m "feat: add user authentication module"
+git push origin feature/auth
