@@ -45,7 +45,7 @@ git branch -M main
 git push -u origin main
 
 connect to your git account using token which can be generated through github portal and it can be specific to your repo
-
+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
 
 git checkout -b feature/auth
 # do work
