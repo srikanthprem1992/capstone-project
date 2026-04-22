@@ -1,0 +1,26 @@
+first create an environment 
+python -m venv venv
+
+Activate virtual environment
+.venv\Scripts\activate
+
+Install below packages as per our project requirement
+pip install fastapi uvicorn sqlalchemy pydantic "passlib[bcrypt]" python-jose python-multipart
+we can create requirements.txt file and list the required packages in the file that needs to be installed
+
+create below folders
+mkdir app
+cd app
+mkdir core db models schemas repositories services api
+mkdir api/routes
+
+Create files:
+touch main.py
+touch core/config.py core/security.py core/logger.py
+touch db/base.py db/session.py
+touch api/deps.py
+
+Add code to main.py
+
+run the below command to check if the main.py file is running the app successfully
+uvicorn app.main:app --reload
