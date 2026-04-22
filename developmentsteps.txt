@@ -54,3 +54,5 @@ git commit -m "feat: add user authentication module"
 git push origin feature/auth
 
 git checkout -b feature/auth
+
+created user.py file that contains users table info
