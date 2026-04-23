@@ -3,6 +3,14 @@ from app.repositories.product_repository import *
 def create_product_service(db, product):
     return create_product(db, product.dict())
 
+# def create_product_service(db, product):
+#     if not product.description:
+#         metadata = generate_product_metadata(product.name)
+#         product.description = metadata["description"]
+#         product.tags = ",".join(metadata["tags"])
+#         product.category = metadata["category"]
+
+    return create_product(db, product.dict())
 def get_product_service(db, product_id):
     product = get_product_by_id(db, product_id)
     if not product:

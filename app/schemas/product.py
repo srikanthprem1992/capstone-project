@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+from typing import List
 
 class ProductCreate(BaseModel):
     sku: str
@@ -34,3 +35,11 @@ class ProductResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class ProductMetadataRequest(BaseModel):
+    name: str
+
+class ProductMetadataResponse(BaseModel):
+    description: str
+    tags: List[str]
+    category: str

@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from app.api.deps import get_db, get_current_user
 from app.schemas.product import ProductCreate, ProductUpdate, ProductResponse
 from app.services.product_service import *
+from app.schemas.product import ProductMetadataRequest, ProductMetadataResponse
+from app.services.ai_service import generate_product_metadata
 
 router = APIRouter(prefix="/products", tags=["Products"])
 
@@ -43,3 +45,8 @@ def delete_product_api(
     user=Depends(get_current_user)
 ):
     return delete_product_service(db, product_id)
+
+
+@router.post("/suggest-metadata", response_model=ProductMetadataResponse)
+def suggest_metadata(request: ProductMetadataRequest):
+    return generate_product_metadata(request.name)
