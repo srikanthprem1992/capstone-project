@@ -56,3 +56,12 @@ git push origin feature/auth
 git checkout -b feature/auth
 
 created user.py file that contains users table info
+
+when getting the below error 
+ImportError: email-validator is not installed, run pip install 'pydantic[email]'
+install
+pip install "pydantic[email]"
+
+pip install bcrypt==4.0.1
+
+pip install requests

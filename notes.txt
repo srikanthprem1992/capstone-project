@@ -17,3 +17,35 @@ When will the DB file be created?
 It gets created when:
 
 You create tables using SQLAlchemy (Base.metadata.create_all())
+
+
+🧠 Now You Fully Match Requirement
+✔ Create
+Validates stock
+Deducts stock
+✔ Update
+Changes status
+Handles cancellation logic
+✔ Delete
+Removes order
+✔ Status Flow
+Controlled transitions
+🧪 Suggested Test Cases
+
+Try these:
+
+1. Create Order
+
+→ stock reduces
+
+2. Update to PAID
+
+→ success
+
+3. Update to CANCELLED
+
+→ stock restored
+
+4. Invalid status
+
+→ error

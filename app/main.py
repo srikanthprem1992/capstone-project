@@ -3,6 +3,7 @@ from app.db.base import Base
 from app.db.session import engine
 from app.api.routes import auth
 from app.api.routes import products
+from app.api.routes import orders
 
 # app.db file creation
 Base.metadata.create_all(bind=engine)
@@ -16,3 +17,4 @@ def root():
 
 app.include_router(auth.router)
 app.include_router(products.router)
+app.include_router(orders.router)
