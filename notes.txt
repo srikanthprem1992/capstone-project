@@ -1,0 +1,19 @@
+You don’t need to install SQLite separately in your case.
+
+🧠 Why?
+SQLite comes built into Python (via sqlite3 module)
+When you use SQLAlchemy with sqlite:///./app.db, it automatically:
+Creates the database file (app.db)
+Uses SQLite internally
+
+So this line already handles everything:
+
+DATABASE_URL = "sqlite:///./app.db"
+
+When will the DB file be created?
+
+👉 Not immediately.
+
+It gets created when:
+
+You create tables using SQLAlchemy (Base.metadata.create_all())
