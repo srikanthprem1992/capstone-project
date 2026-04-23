@@ -1,35 +1,43 @@
+import os
+import json
+from google import genai
+from google.genai import types
+
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+print(os.getenv("GEMINI_API_KEY"))
+
 def generate_product_metadata(name: str):
-    return {
-        "description": f"{name} is a high-quality product with excellent performance and durability.",
-        "tags": ["premium", "latest", "trending"],
-        "category": "electronics"
-    }
+    prompt = f"""
+    You are an expert e-commerce assistant.
 
-# import requests
+    Given the product name: "{name}"
 
-# def generate_product_metadata(name: str):
-#     prompt = f"""
-#     Generate product metadata for: {name}
-#     Return JSON with description, tags (list), category
-#     """
+    Generate:
+    1. A professional product description (2-3 sentences)
+    2. 5 SEO-friendly tags (as a list)
+    3. A suitable product category
 
-#     response = requests.post(
-#         "https://api.openai.com/v1/chat/completions",
-#         headers={
-#             "Authorization": "Bearer YOUR_API_KEY",
-#             "Content-Type": "application/json"
-#         },
-#         json={
-#             "model": "gpt-4o-mini",
-#             "messages": [{"role": "user", "content": prompt}]
-#         }
-#     )
+    Return strictly in JSON format:
+    {{
+        "description": "...",
+        "tags": ["...", "..."],
+        "category": "..."
+    }}
+    """
 
-#     data = response.json()
+    response = client.models.generate_content(
+    model="gemini-flash-latest",  
+    contents=prompt
+)
 
-#     # You’ll need to parse response properly
-#     return {
-#         "description": "Parsed description",
-#         "tags": ["tag1", "tag2"],
-#         "category": "category"
-#     }
+    content = response.text
+
+    try:
+        return json.loads(content)
+    except Exception:
+        return {
+            "description": content,
+            "tags": [],
+            "category": "general"
+        }
