@@ -4,3 +4,4 @@ Base = declarative_base()
 
 # Import models here so metadata knows them
 from app.models.user import User
+from app.models.product import Product
